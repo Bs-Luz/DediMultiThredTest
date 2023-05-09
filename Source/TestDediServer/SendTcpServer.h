@@ -27,5 +27,3 @@ public:
 	FString ServerIP;
 	int32 ServerPort;
 };
-
-

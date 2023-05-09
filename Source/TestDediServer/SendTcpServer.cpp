@@ -23,7 +23,7 @@ FString SendTcpServer::GetServerStatus()
     return ServerStatus;
 }
 
-void SendTcpServer::SendServerStatus(const FString& ServerIP, const int32 Port)
+void SendTcpServer::SendServerStatus(const FString& DediIP, const int32 Port)
 {
     // Create socket
     FSocket* Socket = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateSocket(NAME_Stream, TEXT("default"), false);
@@ -36,7 +36,7 @@ void SendTcpServer::SendServerStatus(const FString& ServerIP, const int32 Port)
     // Connect to server
     TSharedPtr<FInternetAddr> ServerAddr = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateInternetAddr();
     bool bIsValid;
-    ServerAddr->SetIp(*ServerIP, bIsValid);
+    ServerAddr->SetIp(*DediIP, bIsValid);
     ServerAddr->SetPort(Port);
     if (!bIsValid)
     {
